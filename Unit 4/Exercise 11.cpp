@@ -5,6 +5,8 @@
 
 // To calculate a salesperson’s monthly paycheck, you need to know the base salary, the number of years that the salesperson has been with the company, and the total sales made by the salesperson for that month. Suppose baseSalary denotes the base salary,noOfServiceYears denotes the number of years that the salesperson has been with the store,bonus denotes the bonus, totalSales denotes the total sales made by the salesperson for the month, and additionalBonus denotes the additional bonus.
 
+// Since your program handles currency, make sure to use a data type that can store decimals with a precision to 2 decimals.
+
 #include <iostream>
 #include <iomanip>
 
@@ -51,5 +53,3 @@ int main() {
     
     return 0;
 }
-
-

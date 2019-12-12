@@ -1,60 +1,40 @@
-// During the tax season, every Friday, the J&J accounting firm provides assistance to people who prepare their own tax returns. Their charges are as follows:
+// Write a program that defines the named constant PI, const double PI = 3.14159;, which stores the value of π. The program should use PI and the functions listed in Table 6-1 to accomplish the following:
 
-// If a person has low income (<= 25,000) and the consulting time is less than or equal to 30 minutes, there are no charges; otherwise, the service charges are 40% of the regular hourly rate for the time over 30 minutes.
-// For others, if the consulting time is less than or equal to 20 minutes, there are no service charges; otherwise, service charges are 70% of the regular hourly rate for the time over 20 minutes. (For example, suppose that a person has low income and spent 1 hour and 15 minutes, and the hourly rate is $70.00. Then the billing amount is 70.00 X.40 X (45/60) = $21.00.)
-// Instructions
-// Write a program that prompts the user to enter yearly income, the hourly rate, the total consulting time. The program should output the billing amount. Your program must contain a function that takes as input the hourly rate, the total consulting time, and a value indicating whether the person has low income. The function should return the billing amount. Your program may prompt the user to enter the consulting time in minutes.
+// Output the value of √π .
+// Prompt the user to input the value of a double variable r, which stores the radius of a sphere. The program then outputs the following:
+// The value of 4.0πr², which is the surface area of the sphere.
+// The value of (4.0/3.0)πr³, which is the volume of the sphere.
+// You should format your output like the following example:
+
+// Surface area of the sphere: 4 * PI * 5.00 ^ 2 = 314.16
+// Volume of the sphere: 4 / 3 * PI * 5.00 ^ 3 = 523.60
 
 #include <iostream>
+#include <cmath> 
 #include <iomanip>
-
+   
 using namespace std;
 
-double income, hourlyRate, consultingTime, price;
+const double PI = 3.14159;
+double r;
 
-void lowIncome () {
-    if (consultingTime <= 30) {
-    cout << "You've got this service at not cost, my friend.";
-    }
-        
-    else if (consultingTime > 30) {
-    consultingTime = consultingTime - 30;
-    price = 0.4 * hourlyRate * (consultingTime / 60);
-    cout << "Your total price is $" << price;    
-    }
+double area (double r) {
+     return 4.0 * PI * pow(r, 2.0);
 }
 
-void highIncome () {
-    if (consultingTime <= 20) {
-    cout << "You've got this service at not cost, my friend.";
-    }
-    else if (consultingTime > 20) {
-    consultingTime = consultingTime - 20;
-    price = 0.7 * hourlyRate * (consultingTime / 60);
-    cout << "Your total price is $" << price;
-    }
+double volume (double r) {
+    return (4.0 / 3.0) * PI * pow(r, 3.0);
 }
 
 int main() {
-    cout << "Enter your yearly income:" << "\n";
-    cin >> income;
     
-    cout << "What's the hourly rate?" << "\n";
-    cin >> hourlyRate;
+    cout << "What's the radius of the sphere? ";
+    cin >> r;
     
-    cout << "How long is the consulting time (in minutes)?" << "\n";
-    cin >> consultingTime;
-
-    if (income <= 25000) {
     cout << fixed << showpoint;
     cout << setprecision(2);
-    lowIncome();
-    }
     
-    else if (income > 25000) {
-    cout << fixed << showpoint;
-    cout << setprecision(2);
-    highIncome();
-    }
-    return 0;
+    cout << sqrt(PI) << '\n';
+    cout << "Surface area of the sphere: 4 * PI * " << r << " ^ 2 = " << area(r) << "\n";
+    cout << "Volume of the sphere: 4 / 3 * PI * " << r << " ^ 3 = " << volume(r) << "\n";
 }

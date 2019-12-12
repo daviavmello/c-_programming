@@ -1,61 +1,60 @@
-// Write a C++ function, smallestIndex, that takes as parameters an int array and its size and returns the index of the first occurrence of the smallest element in the array. To test your function, write a main that prompts a user for a list of 15 integers and outputs the index and value of the first occurrence of the smallest value.
+// During the tax season, every Friday, the J&J accounting firm provides assistance to people who prepare their own tax returns. Their charges are as follows:
 
-// An example of the program is shown below:
-
-// Enter 15 integers: 
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 0
-// 10
-// 11
-// 12
-// 13
-// 14
-// 1 2 3 4 5 6 7 8 9 0 10 11 12 13 14 
-// The position of the first occurrence of the smallest element in list is: 9
-// The smallest element in list is: 0
+// If a person has low income (<= 25,000) and the consulting time is less than or equal to 30 minutes, there are no charges; otherwise, the service charges are 40% of the regular hourly rate for the time over 30 minutes.
+// For others, if the consulting time is less than or equal to 20 minutes, there are no service charges; otherwise, service charges are 70% of the regular hourly rate for the time over 20 minutes. (For example, suppose that a person has low income and spent 1 hour and 15 minutes, and the hourly rate is $70.00. Then the billing amount is 70.00 X.40 X (45/60) = $21.00.)
+// Instructions
+// Write a program that prompts the user to enter yearly income, the hourly rate, the total consulting time. The program should output the billing amount. Your program must contain a function that takes as input the hourly rate, the total consulting time, and a value indicating whether the person has low income. The function should return the billing amount. Your program may prompt the user to enter the consulting time in minutes.
 
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
-int smallestIndex(int numberArray[], int arraySize);
+double income, hourlyRate, consultingTime, price;
 
-int main()
-{
-    const int MAX_ARRAY_SIZE = 15;
-    
-    int firstArray[MAX_ARRAY_SIZE] = {56, 34, 67, 54, 56, 87, 66, 92, 15, 32, 55, 54, 88, 92, 30};
-    int secondArray[MAX_ARRAY_SIZE] = {79, 26, 97, 87, 73, 44, 67, 46, 55, 13, 20, 20, 33, 42, 60};
-    int thirdArray[MAX_ARRAY_SIZE] = {63, 1, 40, 81, 30, 11, 26, 44, 98, 1, 80, 98, 15, 3, 42};
-    
-    int smallestPositionFirst = smallestIndex(firstArray, MAX_ARRAY_SIZE);
-    int smallestPositionSecond = smallestIndex(secondArray, MAX_ARRAY_SIZE);
-    int smallestPositionThird = smallestIndex(secondArray, MAX_ARRAY_SIZE);
-    
-    cout << "The position of the first occurrence of the smallest element in list is: " << smallestPositionFirst << endl;
-    cout << " The smallest element in list is: " << firstArray[smallestPositionFirst] << endl;
-    cout << "____________________________________" << endl << endl;
-    cout << "The position of the first occurrence of the smallest element in list is: " << smallestPositionSecond << endl;
-    cout << " The smallest element in list is: " << secondArray[smallestPositionSecond] << endl;
-    cout << "____________________________________" << endl << endl;
-    cout << "The position of the first occurrence of the smallest element in list is: " << smallestPositionThird << endl;
-    cout << " The smallest element in list is: " << thirdArray[smallestPositionThird] << endl;
-    return 0;
+void lowIncome () {
+    if (consultingTime <= 30) {
+    cout << "You've got this service at not cost, my friend.";
+    }
+        
+    else if (consultingTime > 30) {
+    consultingTime = consultingTime - 30;
+    price = 0.4 * hourlyRate * (consultingTime / 60);
+    cout << "Your total price is $" << price;    
+    }
 }
 
-int smallestIndex(int numberArray[], int arraySize) {
-    int smallest = 0;
-    for (int i = 0; i < arraySize-1; i++) {
-        if (numberArray[i] < numberArray[smallest])
-            smallest = i;
+void highIncome () {
+    if (consultingTime <= 20) {
+    cout << "You've got this service at not cost, my friend.";
     }
-    return smallest;
+    else if (consultingTime > 20) {
+    consultingTime = consultingTime - 20;
+    price = 0.7 * hourlyRate * (consultingTime / 60);
+    cout << "Your total price is $" << price;
+    }
+}
+
+int main() {
+    cout << "Enter your yearly income:" << "\n";
+    cin >> income;
+    
+    cout << "What's the hourly rate?" << "\n";
+    cin >> hourlyRate;
+    
+    cout << "How long is the consulting time (in minutes)?" << "\n";
+    cin >> consultingTime;
+
+    if (income <= 25000) {
+    cout << fixed << showpoint;
+    cout << setprecision(2);
+    lowIncome();
+    }
+    
+    else if (income > 25000) {
+    cout << fixed << showpoint;
+    cout << setprecision(2);
+    highIncome();
+    }
+    return 0;
 }

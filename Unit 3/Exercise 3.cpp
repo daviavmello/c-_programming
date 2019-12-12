@@ -1,6 +1,4 @@
-// Write a program that accepts as input the mass, in grams, and density, in grams per cubic centimeters, and outputs the volume of the object using the formula: volume = mass / density.
-
-// Format your output to two decimal places.
+// Write a program that prompts the user to enter the weight of a person in kilograms and outputs the equivalent weight in pounds (Note that 1 kilogram equals 2.2 pounds). Format your output with two decimal places.
 
 #include <iostream>
 #include <iomanip>
@@ -9,23 +7,16 @@ using namespace std;
 
 int main() {
 
-double mass, density, volume;
-        
-cout << setprecision(2) << fixed;
+double kilos;
+double pounds;
     
-cout << "What's the mass, in grams, of the object? ";
-cin >> mass;
-cout << endl;
-    
-cout << "What's the density, in grams per cubic centimeters, of the object? ";
-cin >> density;
+cout << "How much do you weight? ";
+cin >> kilos;
 cout << endl;
 
-volume = mass/density;    
-    
-cout << "The volume of your object is: ";
-cout << volume;
-cout << endl;
+pounds = kilos * 2.2;
+
+cout << "Your weight in Pounds is: "<< setprecision(2) << fixed << pounds << endl;
 
 return 0;
 }

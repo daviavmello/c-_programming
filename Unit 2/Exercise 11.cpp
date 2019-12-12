@@ -1,45 +1,21 @@
-// Consider the following program in which the statements are in the incorrect order.
+// Write a program that :
 
-// Rearrange the statements in the following order so that the program prompts the user to input:
-
-// 1. The height of the base of a cylinder
-// 2. The radius of the base of a cylinder
-// The program then outputs (in order):
-
-// 1. The volume of the cylinder.
-// 2. The surface area of the cylinder
-// Format the output to two decimal places.
+// 1. Prompts the capacity, in gallons, of an automobile fuel tank and the miles per gallon the automobile can be driven.
+// 2. Output the number of miles the automobile can be driven without refueling.
 
 #include <iostream>
-#include <iomanip>
-#include <cmath>
 
-using namespace std;
-
-const double PI = 3.14159;
-
+using namespace std;                                   
+ 
 int main()
 {
- 
-double height;
-double radius;
+// Variables
+double capacity;
+double miles;
     
-cout << fixed << showpoint << setprecision(2);
+cin >> capacity >> miles; 
+double totalMiles = capacity * miles;
 
-cout << "Enter the height of the cylinder: ";
-cin >> height;
-cout << endl;
-
-cout << "Enter the radius of the base of the cylinder: ";
-cin >> radius;
-cout << endl;
-
-cout << "Volume of the cylinder = "
-<< PI * pow(radius, 2.0) * height << endl;
-
-cout << "Surface area: "
-<< 2 * PI * radius * height + 2 * PI * pow(radius, 2.0)
-<< endl;
-
-return 0;
+cout << totalMiles;
+    return 0;
 }

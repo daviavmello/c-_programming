@@ -1,24 +1,24 @@
-// Write a C++ statement that outputs the values of name and studyHours with the appropriate text. For example, if the value of name is "Donald" and the value of studyHours is 4.5, the output is:
+// Write C++ statement(s) that declare the following variables: num1, num2,num3, and average of type double.
 
 //include statement(s)
 #include <iostream>
-#include <string>
-
 //using namespace statement
 using namespace std;
 
 int main()
 {
-//variable declaration
-string name;
-double studyHours;
 
+//variable declaration
+double num1 = 75.35;
+double num2 = -35.56;
+double num3 = 15.76;
+double average = (num1 + num2 + num3)/3.0;
+    
 //executable statements
-cout << "What's your name? " << name;
-cin >> name;
-cout << "How many hours did you study this week? " << studyHours;
-cin >> studyHours;
-cout << "Hello, " << name << "!" << " On Saturday, you need to study " << studyHours << " hours for the exam.";
+cout << num1 << endl;
+cout << num2 << endl;
+cout << num3 << endl;
+cout << average << endl;
     
 //return statement
 return 0;
